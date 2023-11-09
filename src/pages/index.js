@@ -9,11 +9,15 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [titleFilter, setTitleFilter] = useState("");
 
-  const addToFavorite = (product) => {
+  const handleFavorite = (product) => {
     const currentFavorites =
       JSON.parse(localStorage.getItem("favorites")) || [];
     if (currentFavorites.find((item) => item.id === product.id)) {
-      return;
+      const updatedFavorites = currentFavorites.filter((item) => {
+        return item.id !== product.id;
+      });
+      getProducts();
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     } else {
       const updatedFavorites = [...currentFavorites, product];
       getProducts();
@@ -24,10 +28,13 @@ export default function Home() {
   const getProducts = async () => {
     const fetchFunc = titleFilter ? fetchFiltered : fetchProducts;
 
-    fetchFunc(titleFilter).then((productsList) => {
-      setProducts(productsList);
-    });
-
+    fetchFunc(titleFilter)
+      .then((productsList) => {
+        setProducts(productsList);
+      })
+      .catch((error) => {
+        console.error("Bir hata oluştu:", error);
+      });
     try {
       const allProducts = await fetchFunc();
       setProducts(allProducts);
@@ -35,6 +42,10 @@ export default function Home() {
     } catch (error) {
       console.error("Ürünler yüklenirken hata oluştu.");
     }
+  };
+  const checkIsFavorite = (product) => {
+    const favorites = JSON.parse(localStorage.getItem("favorites"));
+    return favorites.some((favorite) => favorite.id === product.id);
   };
 
   useEffect(() => {
@@ -58,8 +69,9 @@ export default function Home() {
                 key={product.id}
                 product={product}
                 action={() => {
-                  addToFavorite(product);
+                  handleFavorite(product);
                 }}
+                isFavorite={checkIsFavorite(product)}
               />
             ))}
       </div>
