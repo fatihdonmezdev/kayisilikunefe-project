@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "./api/hello";
+import { fetchFiltered, fetchProducts } from "./api/hello";
 import ProductCard from "@/components/ProductCard";
 import Navbar from "@/components/Navbar";
 import CardSkeleton from "@/components/ProductCard/CardSkeleton";
@@ -7,6 +7,7 @@ import CardSkeleton from "@/components/ProductCard/CardSkeleton";
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [titleFilter, setTitleFilter] = useState("");
 
   const addToFavorite = (product) => {
     const currentFavorites =
@@ -21,8 +22,14 @@ export default function Home() {
   };
 
   const getProducts = async () => {
+    const fetchFunc = titleFilter ? fetchFiltered : fetchProducts;
+
+    fetchFunc(titleFilter).then((productsList) => {
+      setProducts(productsList);
+    });
+
     try {
-      const allProducts = await fetchProducts();
+      const allProducts = await fetchFunc();
       setProducts(allProducts);
       setLoading(false);
     } catch (error) {
@@ -34,27 +41,27 @@ export default function Home() {
     getProducts();
   }, []);
 
+  const searchHandler = (event) => {
+    setTitleFilter(event.target.value);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar searchHandler={searchHandler} fetchProdData={getProducts} />
       <div className="grid sm:grid-cols-4 grid-cols-2 gap-y-8">
-        {loading ? (
-        
-          Array.from({ length: 20 }).map((_, index) => {
-            return <CardSkeleton key={index} />;
-          })
-        ) : (
-         
-          products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              action={() => {
-                addToFavorite(product);
-              }}
-            />
-          ))
-        )}
+        {loading
+          ? Array.from({ length: 20 }).map((_, index) => {
+              return <CardSkeleton key={index} />;
+            })
+          : products.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                action={() => {
+                  addToFavorite(product);
+                }}
+              />
+            ))}
       </div>
     </>
   );
