@@ -13,7 +13,7 @@ function FavoritesPage() {
     <div>
       <Navbar />
       <div className="grid sm:grid-cols-4 grid-cols-2 gap-y-8">
-        {favorites.map((favorite) => (
+        {favorites?.map((favorite) => (
           <ProductCard product={favorite} />
         ))}
       </div>
