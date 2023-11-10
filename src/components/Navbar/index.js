@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { AiOutlineClose } from "react-icons/ai";
+
 function Navbar({ searchHandler, fetchProdData, isDetail }) {
-  // formun hali hazırda olan bir event davranısı var burda bunu engellemeniz gerekir
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     fetchProdData();
@@ -16,7 +23,38 @@ function Navbar({ searchHandler, fetchProdData, isDetail }) {
           >
             <ul>
               <li>
-                <RxHamburgerMenu className="flex md:hidden" size={30} />
+                {isMenuOpen ? (
+                  <div className="flex flex-col justify-center items-center">
+                    <AiOutlineClose
+                      className="flex justify-center items-center md:hidden cursor-pointer"
+                      size={30}
+                      onClick={handleMenuToggle}
+                    />
+                    <li>
+                      <a
+                        href="/"
+                        className="block font-bold hover:text-gray-500 py-2 pl-3 pr-4 text-black"
+                        aria-current="page"
+                      >
+                        HOME
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/favorites"
+                        className="block py-2 font-bold hover:text-gray-500 rounded-full pl-3 pr-4 text-black rounded"
+                      >
+                        FAVORITES
+                      </a>
+                    </li>
+                  </div>
+                ) : (
+                  <RxHamburgerMenu
+                    className="flex md:hidden cursor-pointer"
+                    size={30}
+                    onClick={handleMenuToggle}
+                  />
+                )}
               </li>
             </ul>
             <ul className="font-medium md:flex  justify-center items-center flex-col p-4 md:p-0 mt-4  rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
