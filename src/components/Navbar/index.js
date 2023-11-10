@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
+import Link from "next/link";
 
 function Navbar({ searchHandler, fetchProdData, isDetail }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,21 +32,21 @@ function Navbar({ searchHandler, fetchProdData, isDetail }) {
                       onClick={handleMenuToggle}
                     />
                     <li>
-                      <a
+                      <Link
                         href="/"
                         className="block font-bold hover:text-gray-500 py-2 pl-3 pr-4 text-black"
                         aria-current="page"
                       >
                         HOME
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href="/favorites"
                         className="block py-2 font-bold hover:text-gray-500 rounded-full pl-3 pr-4 text-black rounded"
                       >
                         FAVORITES
-                      </a>
+                      </Link>
                     </li>
                   </div>
                 ) : (
@@ -59,21 +60,21 @@ function Navbar({ searchHandler, fetchProdData, isDetail }) {
             </ul>
             <ul className="font-medium md:flex  justify-center items-center flex-col p-4 md:p-0 mt-4  rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
               <li className="hidden md:flex">
-                <a
+                <Link
                   href="/"
                   className="block font-bold hover:text-gray-500 py-2 pl-3 pr-4 text-black"
                   aria-current="page"
                 >
                   HOME
-                </a>
+                </Link>
               </li>
               <li className="hidden md:flex">
-                <a
+                <Link
                   href="/favorites"
                   className="block py-2 font-bold hover:text-gray-500 rounded-full pl-3 pr-4 text-black rounded"
                 >
                   FAVORITES
-                </a>
+                </Link>
               </li>
             </ul>
 
