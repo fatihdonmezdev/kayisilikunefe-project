@@ -13,17 +13,19 @@ export default function Home() {
   const handleFavorite = (product) => {
     const currentFavorites =
       JSON.parse(localStorage.getItem("favorites")) || [];
+
+    let updatedFavorites;
+
     if (currentFavorites.find((item) => item.id === product.id)) {
-      const updatedFavorites = currentFavorites.filter((item) => {
-        return item.id !== product.id;
-      });
-      getProducts();
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      updatedFavorites = currentFavorites.filter(
+        (item) => item.id !== product.id
+      );
     } else {
-      const updatedFavorites = [...currentFavorites, product];
-      getProducts();
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      updatedFavorites = [...currentFavorites, product];
     }
+
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    getProducts(); // Call getProducts only after updating favorites
   };
 
   const getProducts = async () => {
@@ -39,10 +41,14 @@ export default function Home() {
     }
   };
   const checkIsFavorite = (product) => {
-    const favorites = JSON.parse(localStorage.getItem("favorites"));
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (favorites.length === 0) {
+      return false; // No favorites present, so the product is not a favorite
+    }
+
     return favorites.some((favorite) => favorite.id === product.id);
   };
-
   const searchHandler = (event) => {
     event.preventDefault();
     setTitleFilter(event.target.value);
