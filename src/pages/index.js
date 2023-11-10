@@ -26,21 +26,15 @@ export default function Home() {
   };
 
   const getProducts = async () => {
-    const fetchFunc = titleFilter ? fetchFiltered : fetchProducts;
-
-    fetchFunc(titleFilter)
-      .then((productsList) => {
-        setProducts(productsList);
-      })
-      .catch((error) => {
-        console.error("Bir hata oluştu:", error);
-      });
     try {
-      const allProducts = await fetchFunc();
+      setLoading(true);
+      const fetchFunc = titleFilter ? fetchFiltered : fetchProducts;
+      const allProducts = await fetchFunc(titleFilter);
       setProducts(allProducts);
       setLoading(false);
     } catch (error) {
       console.error("Ürünler yüklenirken hata oluştu.");
+      setLoading(false);
     }
   };
   const checkIsFavorite = (product) => {
@@ -48,13 +42,13 @@ export default function Home() {
     return favorites.some((favorite) => favorite.id === product.id);
   };
 
+  const searchHandler = (event) => {
+    event.preventDefault();
+    setTitleFilter(event.target.value);
+  };
   useEffect(() => {
     getProducts();
   }, []);
-
-  const searchHandler = (event) => {
-    setTitleFilter(event.target.value);
-  };
 
   return (
     <>

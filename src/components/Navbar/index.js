@@ -1,6 +1,11 @@
 import React from "react";
 
 function Navbar({ searchHandler, fetchProdData }) {
+  // formun hali hazırda olan bir event davranısı var burda bunu engellemeniz gerekir
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetchProdData();
+  };
   return (
     <div>
       <nav className="bg-gray-300">
@@ -37,7 +42,7 @@ function Navbar({ searchHandler, fetchProdData }) {
                   ></input>
                   <button
                     type="submit"
-                    onClick={fetchProdData}
+                    onClick={handleSubmit}
                     className="text-white absolute right-2.5 bottom-2.5 font-medium rounded-lg text-sm px-4 py-2 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80"
                   >
                     Search
