@@ -21,6 +21,7 @@ function FavoritesPage() {
       <div className="grid sm:grid-cols-4 grid-cols-2 gap-y-8">
         {favorites?.map((favorite) => (
           <ProductCard
+            key={favorite.id}
             action={() => removeFromFavorites(favorite)}
             product={favorite}
             isFavorite={true}

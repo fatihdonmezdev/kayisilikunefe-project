@@ -16,7 +16,7 @@ function DetailPage() {
 
   useEffect(() => {
     if (id) getDetail();
-  }, [id]);
+  }, [getDetail]);
   return (
     <>
       <Navbar isDetail={true} />
