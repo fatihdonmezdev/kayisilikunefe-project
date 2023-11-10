@@ -3,6 +3,7 @@ import { fetchFiltered, fetchProducts } from "./api/hello";
 import ProductCard from "@/components/ProductCard";
 import Navbar from "@/components/Navbar";
 import CardSkeleton from "@/components/ProductCard/CardSkeleton";
+import Link from "next/link";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -53,7 +54,7 @@ export default function Home() {
   return (
     <>
       <Navbar searchHandler={searchHandler} fetchProdData={getProducts} />
-      <div className="grid sm:grid-cols-4 grid-cols-2 gap-y-8">
+      <div className="grid xl:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-y-8">
         {loading
           ? Array.from({ length: 20 }).map((_, index) => {
               return <CardSkeleton key={index} />;
