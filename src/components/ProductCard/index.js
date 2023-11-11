@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
 
-function ProductCard({ product, action, isFavorite, detailPage }) {
+function ProductCard({
+  product,
+  action,
+  isFavorite,
+  detailPage,
+  favoritePage,
+}) {
   return (
     <div className={detailPage ? "flex justify-center items-center" : ""}>
       <div
@@ -29,20 +35,25 @@ function ProductCard({ product, action, isFavorite, detailPage }) {
             </p>
           </div>
           <div className="flex justify-between items-center">
-            <Link href={`/details/${product?.id}`}>
-              <button
-                href="#"
-                className="p-2 lg:p-4 text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm text-center"
-              >
-                Read more
-              </button>
-            </Link>
+            {detailPage || (
+              <Link href={`/details/${product?.id}`}>
+                <button
+                  href="#"
+                  className="p-2 lg:p-4 text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm text-center"
+                >
+                  Read more
+                </button>
+              </Link>
+            )}
+
             <button
               type="button"
               className="font-medium p-2 md:p-4 rounded-lg text-sm text-center  text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 "
             >
               {product?.price}$
             </button>
+
+            {/* Don't display anything if it's detailPage, also change the icon depending whether it is favorite or not. */}
             {detailPage || (
               <div>
                 {isFavorite ? (
