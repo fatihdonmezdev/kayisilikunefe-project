@@ -3,7 +3,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
 
-function Navbar({ searchHandler, fetchProdData, isDetail }) {
+function Navbar({ searchHandler, fetchProdData, isDetail, favoritePage }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
@@ -79,7 +79,7 @@ function Navbar({ searchHandler, fetchProdData, isDetail }) {
             </ul>
 
             <div className="pl-8">
-              {isDetail || (
+              {isDetail || favoritePage || (
                 <ul className="flex justify-center items-center ">
                   <form className="md:w-80 lg:w-100">
                     <div className="relative">
