@@ -39,7 +39,7 @@ const Hero = () => {
         src="https://nextjs.org/static/twitter-cards/commerce.png"
       />
       <div className="text-3xl font-bold py-8 px-16">New Arrivals</div>
-
+      <div className="border-2 mb-4 mx-8 border-blue-300"></div>
       <div className="grid grid-cols-5">
         {products.slice(15, 20).map((product) => (
           <ProductCard
