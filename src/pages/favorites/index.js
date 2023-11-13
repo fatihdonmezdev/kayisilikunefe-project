@@ -9,14 +9,14 @@ function FavoritesPage() {
 
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites"));
-    if(savedFavorites) {
+    if (savedFavorites) {
       setFavorites(savedFavorites);
     }
-    setTimeout(()=> {
+    setTimeout(() => {
       setLoading(false);
-    },1000) // Yükleme tamamlandığında loading durumunu false yap
+    }, 1000); // Yükleme tamamlandığında loading durumunu false yap
   }, []);
-  
+
   const removeFromFavorites = (productToRemove) => {
     const updatedFavorites = favorites.filter(
       (product) => product.id !== productToRemove.id
@@ -46,7 +46,7 @@ function FavoritesPage() {
           ))
         ) : (
           // Yükleme tamamlandı ancak favori ürün yoksa bir mesaj göster
-          <p >No favorites found.</p>
+          <p>No favorites found.</p>
         )}
       </div>
     </div>
