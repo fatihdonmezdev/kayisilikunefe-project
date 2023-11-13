@@ -26,7 +26,7 @@ function FavoritesPage() {
   };
   return (
     <div>
-      <Navbar favoritePage={true} />
+      <Navbar />
       <div className="grid sm:grid-cols-4 grid-cols-2 gap-y-8">
         {loading ? (
           // Eğer yükleme devam ediyorsa, loading göster
