@@ -6,13 +6,9 @@ import { useEffect, useState } from "react";
 function FavoritesPage() {
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     const savedFavorites = JSON.parse(localStorage.getItem("favorites"));
-    setFavorites(savedFavorites);
-    setLoading(false);
     if (savedFavorites) {
       setFavorites(savedFavorites);
     }
@@ -32,19 +28,6 @@ function FavoritesPage() {
     <div>
       <Navbar favoritePage={true} />
       <div className="grid sm:grid-cols-4 grid-cols-2 gap-y-8">
-        {loading
-          ? Array.from({ length: 12 }).map((_, index) => {
-              return <CardSkeleton key={index} />;
-            })
-          : favorites?.map((favorite) => (
-              <ProductCard
-                key={favorite.id}
-                action={() => removeFromFavorites(favorite)}
-                product={favorite}
-                isFavorite={true}
-                favoritePage={true}
-              />
-            ))}
         {loading ? (
           // Eğer yükleme devam ediyorsa, loading göster
           Array.from({ length: favorites.length }).map((_, index) => (
