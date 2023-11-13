@@ -2,7 +2,8 @@ import Link from "next/link";
 import { BsBookmark, BsFillBookmarkHeartFill } from "react-icons/bs";
 import { useState } from "react";
 
-function ProductCard({ product, detailPage, hero }) {
+function ProductCard({ product, detailPage, hero, action }) {
+  let isFavorite = true;
   const [favoriteIcon, setFavoriteIcon] = useState(
     isFavorite ? (
       <BsFillBookmarkHeartFill size={35} />
