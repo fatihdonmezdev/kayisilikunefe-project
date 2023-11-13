@@ -2,8 +2,7 @@ import Link from "next/link";
 import { BsBookmark, BsFillBookmarkHeartFill } from "react-icons/bs";
 import { useState } from "react";
 
-function ProductCard({ product, detailPage, hero, action }) {
-  let isFavorite = true;
+function ProductCard({ product, detailPage, isFavorite, action, hero }) {
   const [favoriteIcon, setFavoriteIcon] = useState(
     isFavorite ? (
       <BsFillBookmarkHeartFill size={35} />
@@ -27,7 +26,9 @@ function ProductCard({ product, detailPage, hero, action }) {
       <div
         key={product?.id}
         className={
-          "max-w-xs  mt-4 ml-4 rounded-md bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700"
+          hero
+            ? "max-w-sm  mt-4 ml-4 rounded-md bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700"
+            : "max-w-lg  mt-4 ml-4 rounded-md bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700"
         }
       >
         <Link href={`/details/${product?.id}`}>
@@ -46,7 +47,7 @@ function ProductCard({ product, detailPage, hero, action }) {
                 : ""}
             </p>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex mt-8 justify-between items-center">
             <Link href={`/details/${product?.id}`}>
               <button
                 href="#"
