@@ -1,7 +1,26 @@
 import Link from "next/link";
-import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
+import { BsBookmark, BsFillBookmarkHeartFill } from "react-icons/bs";
+import { useState } from "react";
 
-function ProductCard({ product, action, isFavorite, hero }) {
+function ProductCard({ product, detailPage, hero }) {
+  const [favoriteIcon, setFavoriteIcon] = useState(
+    isFavorite ? (
+      <BsFillBookmarkHeartFill size={35} />
+    ) : (
+      <BsBookmark size={35} />
+    )
+  );
+
+  const handleFavoriteAction = () => {
+    action(); // Call the original action (handleFavorite) function
+    setFavoriteIcon((prevIcon) =>
+      prevIcon.type === BsBookmark ? (
+        <BsFillBookmarkHeartFill size={35} />
+      ) : (
+        <BsBookmark size={35} />
+      )
+    );
+  };
   return (
     <div>
       <div
@@ -43,13 +62,14 @@ function ProductCard({ product, action, isFavorite, hero }) {
               {product?.price}$
             </button>
             {/* Don't display anything if it's detailPage, also change the icon depending whether it is favorite or not. */}
-            <div>
-              {isFavorite ? (
-                <BsFillBookmarkHeartFill size={35} onClick={action} />
-              ) : (
-                <BsBookmarkHeart size={35} onClick={action} />
-              )}
-            </div>
+            {detailPage || (
+              <div>
+                <span onClick={handleFavoriteAction}>
+                  {/* Add a span to allow clicking on the icon */}
+                  {favoriteIcon}
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>
