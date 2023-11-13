@@ -24,8 +24,12 @@ function Navbar({ fetchProdData }) {
           <Link href="/">
             <li>Home</li>
           </Link>
-          <li>Products</li>
-          <li>Favorites</li>
+          <Link href="/products">
+            <li>Products</li>
+          </Link>
+          <Link href="/favorites">
+            <li>Favorites</li>
+          </Link>
         </ul>
         <div>Searchbar</div>
       </div>
