@@ -1,21 +1,13 @@
 import Link from "next/link";
 import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
 
-function ProductCard({
-  product,
-  action,
-  isFavorite,
-  detailPage,
-  favoritePage,
-}) {
+function ProductCard({ product, action, isFavorite, hero }) {
   return (
-    <div className={detailPage ? "flex justify-center items-center" : ""}>
+    <div>
       <div
         key={product?.id}
         className={
-          detailPage
-            ? "md:max-w-xl  mt-4 ml-4 rounded-md bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700"
-            : "max-w-md  mt-4 ml-4 rounded-md bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700"
+          "max-w-xs  mt-4 ml-4 rounded-md bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700"
         }
       >
         <Link href={`/details/${product?.id}`}>
@@ -35,16 +27,14 @@ function ProductCard({
             </p>
           </div>
           <div className="flex justify-between items-center">
-            {detailPage || (
-              <Link href={`/details/${product?.id}`}>
-                <button
-                  href="#"
-                  className="p-2 lg:p-4 text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm text-center"
-                >
-                  Read more
-                </button>
-              </Link>
-            )}
+            <Link href={`/details/${product?.id}`}>
+              <button
+                href="#"
+                className="p-2 lg:p-4 text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm text-center"
+              >
+                Read more
+              </button>
+            </Link>
 
             <button
               type="button"
@@ -52,17 +42,14 @@ function ProductCard({
             >
               {product?.price}$
             </button>
-
             {/* Don't display anything if it's detailPage, also change the icon depending whether it is favorite or not. */}
-            {detailPage || (
-              <div>
-                {isFavorite ? (
-                  <BsFillBookmarkHeartFill size={35} onClick={action} />
-                ) : (
-                  <BsBookmarkHeart size={35} onClick={action} />
-                )}
-              </div>
-            )}
+            <div>
+              {isFavorite ? (
+                <BsFillBookmarkHeartFill size={35} onClick={action} />
+              ) : (
+                <BsBookmarkHeart size={35} onClick={action} />
+              )}
+            </div>
           </div>
         </div>
       </div>

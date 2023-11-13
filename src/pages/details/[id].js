@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { fetchDetail } from "../api/hello";
 import ProductCard from "@/components/ProductCard";
 import Navbar from "@/components/Navbar";
+import DetailCard from "@/components/ProductCard/DetailCard";
 
 function DetailPage() {
   const [details, setDetails] = useState(null);
@@ -20,7 +21,7 @@ function DetailPage() {
   return (
     <>
       <Navbar isDetail={true} />
-      <ProductCard product={details} detailPage={true} />
+      <DetailCard product={details} />
     </>
   );
 }
