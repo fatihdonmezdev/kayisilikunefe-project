@@ -30,6 +30,9 @@ function Navbar({ fetchProdData }) {
           <Link href="/favorites">
             <li>Favorites</li>
           </Link>
+          <Link href="/signUp">
+            <li>Sign Up</li>
+          </Link>
         </ul>
         <div>Searchbar</div>
       </div>
