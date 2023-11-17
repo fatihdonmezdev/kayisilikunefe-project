@@ -1,13 +1,18 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 const ProductSchema = Yup.object().shape({
-  title: Yup.string().required('Product title is required'),
-  description: Yup.string().min(2, 'Too short!').max(250, 'Too Long!').required('Description is required'),
-  price: Yup.number().positive('Price must be a positive number').required('Price is required'),
-  imageUrl: Yup.string().url('Must be a valid URL').nullable(),
+  title: Yup.string().required("Product title is required"),
+  description: Yup.string()
+    .min(2, "Too short!")
+    .max(250, "Too Long!")
+    .required("Description is required"),
+  price: Yup.number()
+    .positive("Price must be a positive number")
+    .required("Price is required"),
+  imageUrl: Yup.string().url("Must be a valid URL").nullable(),
 });
 const EditProduct = () => {
   const router = useRouter();
@@ -16,22 +21,22 @@ const EditProduct = () => {
   const [submitting, setSubmitting] = useState(false);
   const formik = useFormik({
     initialValues: {
-      title: '',
-      description: '',
-      currency: '',
-      price: '',
-      imageUrl: '',
+      title: "",
+      description: "",
+      currency: "",
+      price: "",
+      imageUrl: "",
     },
     validationSchema: ProductSchema,
     onSubmit: async (values) => {
       try {
         setSubmitting(true);
-        await axios.post(`http://localhost:3001/edit-product/${id}`, values);
-        alert('Product added successfully!');
-        router.push('/');
+        await axios.put(`http://localhost:3001/products/${id}`, values);
+        alert("Product added successfully!");
+        router.push("/");
       } catch (error) {
-        alert('Failed to add product');
-        console.error('An error occurred:', error);
+        alert("Failed to add product");
+        console.error("An error occurred:", error);
       } finally {
         setSubmitting(false);
       }
@@ -44,14 +49,14 @@ const EditProduct = () => {
         const response = await new Promise((resolve, reject) => {
           setTimeout(() => {
             axios
-              .get(`http://localhost:3001/edit-product/${id}`)
+              .get(`http://localhost:3001/products/${id}`)
               .then(resolve)
               .catch(reject);
           }, 1000);
         });
         formik.setValues(response.data);
       } catch (error) {
-        console.error('Error!!!', error);
+        console.error("Error!!!", error);
       }
       setLoading(false);
     };
@@ -61,10 +66,15 @@ const EditProduct = () => {
     <div className="min-h-screen bg-gradient-to-br bg-slate-800">
       <div className="container mx-auto">
         <div className="brand-box">
-          <h1 className="font-bold text-3xl text-white text-center">Edit Product</h1>
+          <h1 className="font-bold text-3xl text-white text-center">
+            Edit Product
+          </h1>
         </div>
         <div className="magic-form max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-8">
-          <form onChange={formik.handleChange} className="grid grid-cols-1 gap-4">
+          <form
+            onChange={formik.handleChange}
+            className="grid grid-cols-1 gap-4"
+          >
             <input
               id="title"
               name="title"

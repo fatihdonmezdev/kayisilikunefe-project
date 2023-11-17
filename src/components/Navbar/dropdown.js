@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const DropdownMenu = () => {
   const [dropdown, SetDropdown] = useState(false);
+  const router = useRouter();
+  const { id } = router.query;
   return (
     <div>
       <div
@@ -51,8 +54,7 @@ const DropdownMenu = () => {
               Add Products
             </Link>
             <Link
-              href="/edit-product/[id]"
-              as="/edit-product/your-product-2"
+              href={`/edit-product/${id}`}
               className="text-gray-700 block px-4 py-2 text-sm"
               role="menuitem"
               tabIndex="-1"
