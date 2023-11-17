@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://api.escuelajs.co/api/v1/products";
+const baseURL = "http://localhost:3001/products";
 
 const axiosInstance = axios.create({
   baseURL,
@@ -8,12 +8,6 @@ const axiosInstance = axios.create({
 
 export const fetchProducts = async () => {
   const response = await axiosInstance.get();
-
-  return response.data;
-};
-
-export const fetchFiltered = async (title) => {
-  const response = await axiosInstance.get(`?title=${title}`);
 
   return response.data;
 };

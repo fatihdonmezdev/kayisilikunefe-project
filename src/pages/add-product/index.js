@@ -1,14 +1,19 @@
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
 const ProductSchema = Yup.object().shape({
-  title: Yup.string().required('Product title is required'),
-  description: Yup.string().min(2, 'Too short!').max(250, 'Too Long!').required('Description is required'),
-  price: Yup.number().positive('Price must be a positive number').required('Price is required'),
-  imageUrl: Yup.string().url('Must be a valid URL').nullable(),
+  title: Yup.string().required("Product title is required"),
+  description: Yup.string()
+    .min(2, "Too short!")
+    .max(250, "Too Long!")
+    .required("Description is required"),
+  price: Yup.number()
+    .positive("Price must be a positive number")
+    .required("Price is required"),
+  imageUrl: Yup.string().url("Must be a valid URL").nullable(),
 });
 
 const AddProduct = () => {
@@ -17,22 +22,21 @@ const AddProduct = () => {
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      description: '',
-      currency: '',
-      price: '',
-      imageUrl: '',
+      title: "",
+      description: "",
+      imageUrl: "",
+      price: "",
     },
     validationSchema: ProductSchema,
     onSubmit: async (values) => {
       try {
         setSubmitting(true);
-        await axios.post('http://localhost:3001/add-product', values);
-        alert('Product added successfully!');
-        router.push('/');
+        await axios.post("http://localhost:3001/products", values);
+        alert("Product added successfully!");
+        router.push("/");
       } catch (error) {
-        alert('Failed to add product');
-        console.error('An error occurred:', error);
+        alert("Failed to add product");
+        console.error("An error occurred:", error);
       } finally {
         setSubmitting(false);
       }
@@ -43,10 +47,15 @@ const AddProduct = () => {
     <div className="min-h-screen bg-gradient-to-br bg-slate-800">
       <div className="container mx-auto">
         <div className="brand-box">
-          <h1 className="font-bold text-3xl text-white text-center">Add Product</h1>
+          <h1 className="font-bold text-3xl text-white text-center">
+            Add Product
+          </h1>
         </div>
         <div className="magic-form max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-8">
-          <form onSubmit={formik.handleSubmit} className="grid grid-cols-1 gap-4">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="grid grid-cols-1 gap-4"
+          >
             <input
               id="title"
               name="title"
@@ -73,7 +82,6 @@ const AddProduct = () => {
               <div className="text-red-500">{formik.errors.description}</div>
             )}
 
-
             <input
               id="price"
               name="price"
@@ -91,7 +99,7 @@ const AddProduct = () => {
             <input
               id="imageUrl"
               name="imageUrl"
-              placeholder="Image URL"
+              placeholder="image URL"
               value={formik.values.imageUrl}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}

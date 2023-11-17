@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { BsBookmark, BsFillBookmarkHeartFill } from "react-icons/bs";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 
 function ProductCard({ product, detailPage, isFavorite, action, hero }) {
+  const [imageError, setImageError] = useState(false);
   const [favoriteIcon, setFavoriteIcon] = useState(
     isFavorite ? (
       <BsFillBookmarkHeartFill size={35} />
@@ -10,7 +11,7 @@ function ProductCard({ product, detailPage, isFavorite, action, hero }) {
       <BsBookmark size={35} />
     )
   );
-
+  const randimg = Math.floor(Math.random() * 100);
   const handleFavoriteAction = () => {
     action(); // Call the original action (handleFavorite) function
     setFavoriteIcon((prevIcon) =>
@@ -32,7 +33,15 @@ function ProductCard({ product, detailPage, isFavorite, action, hero }) {
         }
       >
         <Link href={`/details/${product?.id}`}>
-          <img className="p-4" src={product?.images[0]} />
+          <img
+            className="p-4"
+            src={
+              imageError
+                ? `https://picsum.photos/350/300?random=${randimg}`
+                : product?.imageUrl
+            }
+            onError={() => setImageError(true)}
+          />
         </Link>
         <div className="p-5">
           <div className="h-40">
@@ -51,7 +60,7 @@ function ProductCard({ product, detailPage, isFavorite, action, hero }) {
             <Link href={`/details/${product?.id}`}>
               <button
                 href="#"
-                className="p-2 lg:p-4 text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm text-center"
+                className="p-2 lg:p-4 text-white bg-slate-400 hover:bg-slate-600 font-medium rounded-lg text-sm text-center"
               >
                 Read more
               </button>
@@ -59,7 +68,7 @@ function ProductCard({ product, detailPage, isFavorite, action, hero }) {
 
             <button
               type="button"
-              className="font-medium p-2 md:p-4 rounded-lg text-sm text-center  text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 "
+              className="font-medium p-2 md:p-4 rounded-lg text-sm text-center  text-white bg-slate-900"
             >
               {product?.price}$
             </button>
