@@ -26,6 +26,9 @@ const DetailCard = ({ product }) => {
           <div className="mb-3 flex justify-between pt-8 font-normal text-gray-700 dark:text-gray-400">
             <div className="text-4xl font-bold">{product?.price} $</div>
           </div>
+          <div>
+            <BsFillBookmarkHeartFill />
+          </div>
         </div>
       </a>
     </div>
