@@ -51,7 +51,8 @@ const DropdownMenu = () => {
               Add Products
             </Link>
             <Link
-              href="#"
+              href="/edit-product/[id]"
+              as="/edit-product/your-product-2"
               className="text-gray-700 block px-4 py-2 text-sm"
               role="menuitem"
               tabIndex="-1"
@@ -59,6 +60,7 @@ const DropdownMenu = () => {
             >
               Edit Products
             </Link>
+
             <Link
               href="#"
               className="text-gray-700 block px-4 py-2 text-sm"

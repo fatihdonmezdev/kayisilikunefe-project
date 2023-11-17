@@ -97,6 +97,13 @@
       "imageUrl": "https://github.com/ErhanArda/sisterslab-frontend-bootcamp/blob/main/Week6/docs/assignmnents.md",
       "price": 11.11,
       "id": 14
+    },
+    {
+      "title": "Deneme1",
+      "description": "Test123",
+      "imageUrl": "",
+      "price": 123,
+      "id": 15
     }
   ]
 }
