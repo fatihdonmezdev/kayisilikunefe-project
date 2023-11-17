@@ -10,9 +10,9 @@ const Hero = () => {
 
     let updatedFavorites;
 
-    if (currentFavorites.find((item) => item.id === product.id)) {
+    if (currentFavorites.find((item) => item?.id === product?.id)) {
       updatedFavorites = currentFavorites.filter(
-        (item) => item.id !== product.id
+        (item) => item?.id !== product?.id
       );
     } else {
       updatedFavorites = [...currentFavorites, product];
@@ -41,7 +41,7 @@ const Hero = () => {
       <div className="text-3xl font-bold py-8 px-16">New Arrivals</div>
       <div className="border-2 mb-4 mx-8 border-blue-300"></div>
       <div className="grid grid-cols-5">
-        {products.slice(15, 20).map((product) => (
+        {products.slice(0, 5).map((product) => (
           <ProductCard
             key={product.id}
             product={product}

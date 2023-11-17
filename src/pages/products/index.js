@@ -46,7 +46,7 @@ export default function Products() {
       return false; // No favorites present, so the product is not a favorite
     }
 
-    return favorites.some((favorite) => favorite.id === product.id);
+    return favorites.some((favorite) => favorite?.id === product?.id);
   };
   const searchHandler = (event) => {
     event.preventDefault();
