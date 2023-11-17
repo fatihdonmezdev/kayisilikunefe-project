@@ -1,15 +1,15 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from "yup";
-
+import Link from 'next/link';
 
 
 const Form = () => {
   return (
-    <div className='min-h-screen bg-gradient-to-br from-purple-500 to-indigo-500'>
+    <div className='min-h-screen bg-gradient-to-br bg-slate-800'>
     <div className='container mx-auto p-4 '>
       <div className='brand-box'>
-        <h1 className='font-bold text-2xl mx-auto my-4'>Sign Up</h1>
+        <h1 className='font-bold text-2xl mx-auto my-4 text-white'>Sign Up</h1>
       </div>
       <div className='magic-form max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-8'>
         <Formik
@@ -132,7 +132,7 @@ const Form = () => {
                 </label>
               </div>
               <button type="submit" disabled={!dirty || isSubmitting} className="bg-gradient-to-r from-gray-400 to-gray-600 hover:from-gray-500 hover:to-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Sign in
+                Sign Up
               </button>
             </form>
           )}
