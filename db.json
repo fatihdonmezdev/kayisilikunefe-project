@@ -1,0 +1,102 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Smartphone X",
+      "imageUrl": "https://picsum.photos/350/300?random=10",
+      "description": "The latest and greatest smartphone with cutting-edge features.",
+      "price": 799.99
+    },
+    {
+      "id": 2,
+      "title": "Laptop Pro",
+      "imageUrl": "https://picsum.photos/350/300?random=1",
+      "description": "Powerful laptop for professionals, designed for productivity and performance.",
+      "price": 1299.99
+    },
+    {
+      "id": 3,
+      "title": "Fitness Tracker 2000",
+      "imageUrl": "https://picsum.photos/350/300?random=2",
+      "description": "Track your fitness goals with precision and style with the Fitness Tracker 2000.",
+      "price": 79.99
+    },
+    {
+      "id": 4,
+      "title": "Coffee Maker Deluxe",
+      "imageUrl": "https://picsum.photos/350/300?random=3",
+      "description": "Brew the perfect cup of coffee every morning with the Coffee Maker Deluxe.",
+      "price": 129.99
+    },
+    {
+      "id": 5,
+      "title": "Wireless Headphones Pro",
+      "imageUrl": "https://picsum.photos/350/300?random=4",
+      "description": "Immerse yourself in high-quality sound with the Wireless Headphones Pro.",
+      "price": 149.99
+    },
+    {
+      "id": 6,
+      "title": "Gaming Console Ultra",
+      "imageUrl": "https://picsum.photos/350/300?random=5",
+      "description": "Experience gaming like never before with the powerful Gaming Console Ultra.",
+      "price": 399.99
+    },
+    {
+      "id": 7,
+      "title": "4K Smart TV",
+      "imageUrl": "https://picsum.photos/350/300?random=6",
+      "description": "Enjoy stunning visuals and smart features with the 4K Smart TV.",
+      "price": 899.99
+    },
+    {
+      "id": 8,
+      "title": "Digital Camera Pro",
+      "imageUrl": "https://picsum.photos/350/300?random=7",
+      "description": "Capture professional-quality photos with the advanced Digital Camera Pro.",
+      "price": 599.99
+    },
+    {
+      "id": 9,
+      "title": "Home Security System",
+      "imageUrl": "https://picsum.photos/350/300?random=8",
+      "description": "Keep your home safe with the state-of-the-art Home Security System.",
+      "price": 299.99
+    },
+    {
+      "id": 10,
+      "title": "Electric Scooter Max",
+      "imageUrl": "https://picsum.photos/350/300?random=12",
+      "description": "Effortless urban commuting with the Electric Scooter Max's high-speed performance.",
+      "price": 249.99
+    },
+    {
+      "id": 11,
+      "title": "Kayısı Dograma Makinasi",
+      "imageUrl": "https://picsum.photos/350/300?random=11",
+      "description": "The best product you can buy ever in your life.",
+      "price": 0.99
+    },
+    {
+      "id": 12,
+      "title": "0.7 Kalem ucu",
+      "imageUrl": "https://picsum.photos/350/300?random=13",
+      "description": "Effortless urban commuting with the Electric Scooter Max's high-speed performance.",
+      "price": 249.99
+    },
+    {
+      "title": "Koylu Yagmur",
+      "description": "Free",
+      "price": 0.99,
+      "imageUrl": "https://flowbite.com/docs/components/dropdowns/",
+      "id": 13
+    },
+    {
+      "title": "Melike Demiralay",
+      "description": "The best engineer ever",
+      "imageUrl": "https://github.com/ErhanArda/sisterslab-frontend-bootcamp/blob/main/Week6/docs/assignmnents.md",
+      "price": 11.11,
+      "id": 14
+    }
+  ]
+}

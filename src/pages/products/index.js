@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
 import { fetchFiltered, fetchProducts } from "../api/hello";
 import ProductCard from "@/components/ProductCard";
-import Navbar from "@/components/Navbar";
 import CardSkeleton from "@/components/ProductCard/CardSkeleton";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [titleFilter, setTitleFilter] = useState("");
-
   const handleFavorite = (product) => {
     const currentFavorites =
       JSON.parse(localStorage.getItem("favorites")) || [];
 
     let updatedFavorites;
 
-    if (currentFavorites.find((item) => item.id === product.id)) {
+    if (currentFavorites.find((item) => item.title === product.title)) {
       updatedFavorites = currentFavorites.filter(
-        (item) => item.id !== product.id
+        (item) => item.title !== product.title
       );
     } else {
       updatedFavorites = [...currentFavorites, product];
@@ -46,7 +44,7 @@ export default function Products() {
       return false; // No favorites present, so the product is not a favorite
     }
 
-    return favorites.some((favorite) => favorite?.id === product?.id);
+    return favorites.some((favorite) => favorite?.title === product?.title);
   };
   useEffect(() => {
     getProducts();
@@ -61,7 +59,7 @@ export default function Products() {
             })
           : products.map((product) => (
               <ProductCard
-                key={product.id}
+                key={product.title}
                 product={product}
                 action={() => {
                   handleFavorite(product);

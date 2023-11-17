@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 
 const DetailCard = ({ product }) => {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <div className="flex justify-center items-center h-screen">
       <a
@@ -10,8 +12,9 @@ const DetailCard = ({ product }) => {
       >
         <img
           className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-96 md:rounded-none md:rounded-s-lg"
-          src={product?.images[0]}
+          src={product?.imageUrl || "https://picsum.photos/350/300?random=11"}
           alt=""
+          onError={() => setImageError(true)}
         />
         <div className="flex flex-col justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
