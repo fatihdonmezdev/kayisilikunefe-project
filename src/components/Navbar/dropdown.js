@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 
 const DropdownMenu = () => {
@@ -40,7 +41,7 @@ const DropdownMenu = () => {
           tabIndex="-1"
         >
           <div className={dropdown ? "flex flex-col" : "hidden"} role="none">
-            <a
+            <Link
               href="/add-product"
               className="text-gray-700 block px-4 py-2 text-sm"
               role="menuitem"
@@ -48,8 +49,8 @@ const DropdownMenu = () => {
               id="menu-item-0"
             >
               Add Products
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="text-gray-700 block px-4 py-2 text-sm"
               role="menuitem"
@@ -57,8 +58,8 @@ const DropdownMenu = () => {
               id="menu-item-1"
             >
               Edit Products
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="text-gray-700 block px-4 py-2 text-sm"
               role="menuitem"
@@ -66,7 +67,7 @@ const DropdownMenu = () => {
               id="menu-item-1"
             >
               Remove Products
-            </a>
+            </Link>
           </div>
         </div>
       </div>
