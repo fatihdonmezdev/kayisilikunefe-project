@@ -20,7 +20,6 @@ function DetailPage() {
   }, [id]);
   return (
     <>
-      <Navbar isDetail={true} />
       <DetailCard product={details} />
     </>
   );

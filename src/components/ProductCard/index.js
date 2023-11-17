@@ -51,7 +51,7 @@ function ProductCard({ product, detailPage, isFavorite, action, hero }) {
             <Link href={`/details/${product?.id}`}>
               <button
                 href="#"
-                className="p-2 lg:p-4 text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm text-center"
+                className="p-2 lg:p-4 text-white bg-slate-700 font-medium rounded-lg text-sm text-center"
               >
                 Read more
               </button>

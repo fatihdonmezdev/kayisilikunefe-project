@@ -48,17 +48,12 @@ export default function Products() {
 
     return favorites.some((favorite) => favorite?.id === product?.id);
   };
-  const searchHandler = (event) => {
-    event.preventDefault();
-    setTitleFilter(event.target.value);
-  };
   useEffect(() => {
     getProducts();
   }, []);
 
   return (
     <>
-      <Navbar searchHandler={searchHandler} fetchProdData={getProducts} />
       <div className="grid xl:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-y-8">
         {loading
           ? Array.from({ length: 20 }).map((_, index) => {
