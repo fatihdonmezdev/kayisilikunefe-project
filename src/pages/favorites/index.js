@@ -19,7 +19,7 @@ function FavoritesPage() {
 
   const removeFromFavorites = (productToRemove) => {
     const updatedFavorites = favorites.filter(
-      (product) => product.id !== productToRemove.id
+      (product) => product?.id !== productToRemove?.id
     );
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
@@ -37,7 +37,7 @@ function FavoritesPage() {
           // Yükleme tamamlandı ve favoriler varsa favori ürünleri göster
           favorites.map((favorite) => (
             <ProductCard
-              key={favorite.id}
+              key={favorite?.id}
               action={() => removeFromFavorites(favorite)}
               product={favorite}
               isFavorite={true}
