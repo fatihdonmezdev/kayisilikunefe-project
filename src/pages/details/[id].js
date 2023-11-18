@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { fetchDetail } from "../api/hello";
-import ProductCard from "@/components/ProductCard";
-import Navbar from "@/components/Navbar";
 import DetailCard from "@/components/ProductCard/DetailCard";
 
 function DetailPage() {

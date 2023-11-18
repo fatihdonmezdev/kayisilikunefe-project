@@ -1,7 +1,6 @@
 import { fetchProducts } from "@/pages/api/hello";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard";
-import { useDispatch, useSelector } from "react-redux";
 
 const Hero = () => {
   const [products, setProducts] = useState([]);
