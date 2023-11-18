@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
-import { fetchFiltered, fetchProducts } from "../api/hello";
+import { fetchProducts } from "../api/hello";
 import ProductCard from "@/components/ProductCard";
 import CardSkeleton from "@/components/ProductCard/CardSkeleton";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [titleFilter, setTitleFilter] = useState("");
 
   const getProducts = async () => {
     try {
       setLoading(true);
-      const fetchFunc = titleFilter ? fetchFiltered : fetchProducts;
-      const allProducts = await fetchFunc(titleFilter);
+      const allProducts = await fetchProducts();
       setProducts(allProducts);
       setLoading(false);
     } catch (error) {
