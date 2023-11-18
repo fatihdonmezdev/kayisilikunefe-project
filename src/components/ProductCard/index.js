@@ -1,27 +1,16 @@
 import Link from "next/link";
 import { BsBookmark, BsFillBookmarkHeartFill } from "react-icons/bs";
-import { use, useEffect, useState } from "react";
-
-function ProductCard({ product, detailPage, isFavorite, action, hero }) {
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setFavorite } from "@/pages/store/FavoriteSlice";
+function ProductCard({ product, detailPage, hero }) {
   const [imageError, setImageError] = useState(false);
-  const [favoriteIcon, setFavoriteIcon] = useState(
-    isFavorite ? (
-      <BsFillBookmarkHeartFill size={35} />
-    ) : (
-      <BsBookmark size={35} />
-    )
-  );
+  console.log(product);
   const randimg = Math.floor(Math.random() * 100);
-  const handleFavoriteAction = () => {
-    action(); // Call the original action (handleFavorite) function
-    setFavoriteIcon((prevIcon) =>
-      prevIcon.type === BsBookmark ? (
-        <BsFillBookmarkHeartFill size={35} />
-      ) : (
-        <BsBookmark size={35} />
-      )
-    );
-  };
+  const favorites = useSelector((state) => state.favorites.favorite);
+  const favoriteState = favorites.find((item) => item.id === product.id);
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div
@@ -50,11 +39,11 @@ function ProductCard({ product, detailPage, isFavorite, action, hero }) {
                 {product?.title}
               </h5>
             </Link>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {product?.description
                 ? product.description.split(" ").slice(0, 50).join(" ")
                 : ""}
-            </p>
+            </div>
           </div>
           <div className="flex mt-8 justify-between items-center">
             <Link href={`/details/${product?.id}`}>
@@ -75,9 +64,13 @@ function ProductCard({ product, detailPage, isFavorite, action, hero }) {
             {/* Don't display anything if it's detailPage, also change the icon depending whether it is favorite or not. */}
             {detailPage || (
               <div>
-                <span onClick={handleFavoriteAction}>
+                <span onClick={() => dispatch(setFavorite(product))}>
                   {/* Add a span to allow clicking on the icon */}
-                  {favoriteIcon}
+                  {favoriteState ? (
+                    <BsFillBookmarkHeartFill size={40} />
+                  ) : (
+                    <BsBookmark size={40} />
+                  )}
                 </span>
               </div>
             )}
