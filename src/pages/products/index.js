@@ -7,23 +7,6 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [titleFilter, setTitleFilter] = useState("");
-  const handleFavorite = (product) => {
-    const currentFavorites =
-      JSON.parse(localStorage.getItem("favorites")) || [];
-
-    let updatedFavorites;
-
-    if (currentFavorites.find((item) => item.title === product.title)) {
-      updatedFavorites = currentFavorites.filter(
-        (item) => item.title !== product.title
-      );
-    } else {
-      updatedFavorites = [...currentFavorites, product];
-    }
-
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    getProducts(); // Call getProducts only after updating favorites
-  };
 
   const getProducts = async () => {
     try {
@@ -61,9 +44,6 @@ export default function Products() {
               <ProductCard
                 key={product.title}
                 product={product}
-                action={() => {
-                  handleFavorite(product);
-                }}
                 isFavorite={checkIsFavorite(product)}
               />
             ))}
