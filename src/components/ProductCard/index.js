@@ -36,7 +36,9 @@ function ProductCard({ product, detailPage, hero }) {
               </h5>
             </Link>
             <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {product?.description
+              {hero
+                ? product.description.split(" ").slice(0, 5).join(" ")
+                : product?.description
                 ? product.description.split(" ").slice(0, 25).join(" ")
                 : ""}
             </div>
