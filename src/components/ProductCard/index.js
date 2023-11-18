@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BsBookmark, BsFillBookmarkHeartFill } from "react-icons/bs";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFavorite } from "@/pages/store/FavoriteSlice";
+import { setFavorite } from "@/store/FavoriteSlice";
 function ProductCard({ product, detailPage, hero }) {
   const [imageError, setImageError] = useState(false);
   console.log(product);
@@ -24,11 +24,7 @@ function ProductCard({ product, detailPage, hero }) {
         <Link href={`/details/${product?.id}`}>
           <img
             className="p-4"
-            src={
-              imageError
-                ? `https://picsum.photos/350/300?random=${randimg}`
-                : product?.imageUrl
-            }
+            src={`https://picsum.photos/350/300?random=${randimg}`}
             onError={() => setImageError(true)}
           />
         </Link>
@@ -40,8 +36,10 @@ function ProductCard({ product, detailPage, hero }) {
               </h5>
             </Link>
             <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {product?.description
-                ? product.description.split(" ").slice(0, 50).join(" ")
+              {hero
+                ? product.description.split(" ").slice(0, 5).join(" ")
+                : product?.description
+                ? product.description.split(" ").slice(0, 25).join(" ")
                 : ""}
             </div>
           </div>

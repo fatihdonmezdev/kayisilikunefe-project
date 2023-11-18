@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3001/products";
+const baseURL = "https://fakestoreapi.com/products";
 
 const axiosInstance = axios.create({
   baseURL,
@@ -8,6 +8,12 @@ const axiosInstance = axios.create({
 
 export const fetchProducts = async () => {
   const response = await axiosInstance.get();
+
+  return response.data;
+};
+
+export const fetchDetail = async (id) => {
+  const response = await axiosInstance.get(`/${id}`);
 
   return response.data;
 };

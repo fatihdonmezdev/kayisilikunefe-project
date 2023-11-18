@@ -1,7 +1,7 @@
 import React from "react";
 import { BsFillBookmarkHeartFill, BsBookmarkHeart } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { setFavorite } from "@/pages/store/FavoriteSlice";
+import { setFavorite } from "@/store/FavoriteSlice";
 
 const DetailCard = ({ product }) => {
   const favorites = useSelector((state) => state.favorites.favorite);
