@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import CardSkeleton from "@/components/ProductCard/CardSkeleton";
 import { useSelector, useDispatch } from "react-redux";
-import { loadFavoritesFromLocalStorage } from "../store/FavoriteSlice";
+import { loadFavoritesFromLocalStorage } from "../../store/FavoriteSlice";
 import { useEffect, useState } from "react";
 
 function FavoritesPage() {

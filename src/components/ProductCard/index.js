@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BsBookmark, BsFillBookmarkHeartFill } from "react-icons/bs";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFavorite } from "@/pages/store/FavoriteSlice";
+import { setFavorite } from "@/store/FavoriteSlice";
 function ProductCard({ product, detailPage, hero }) {
   const [imageError, setImageError] = useState(false);
   console.log(product);
