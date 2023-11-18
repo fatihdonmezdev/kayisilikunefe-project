@@ -127,6 +127,7 @@ const EditProduct = () => {
             <button
               type="submit"
               disabled={submitting}
+              onClick={formik.handleSubmit}
               className="bg-gradient-to-r from-gray-400 to-gray-600 hover:from-gray-500 hover:to-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Edit Product
