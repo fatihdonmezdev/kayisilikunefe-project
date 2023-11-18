@@ -11,9 +11,3 @@ export const fetchProducts = async () => {
 
   return response.data;
 };
-
-export const fetchDetail = async (id) => {
-  const response = await axiosInstance.get(`/${id}`);
-
-  return response.data;
-};
