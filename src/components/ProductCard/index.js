@@ -24,11 +24,7 @@ function ProductCard({ product, detailPage, hero }) {
         <Link href={`/details/${product?.id}`}>
           <img
             className="p-4"
-            src={
-              imageError
-                ? `https://picsum.photos/350/300?random=${randimg}`
-                : product?.imageUrl
-            }
+            src={`https://picsum.photos/350/300?random=${randimg}`}
             onError={() => setImageError(true)}
           />
         </Link>
@@ -41,7 +37,7 @@ function ProductCard({ product, detailPage, hero }) {
             </Link>
             <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {product?.description
-                ? product.description.split(" ").slice(0, 50).join(" ")
+                ? product.description.split(" ").slice(0, 25).join(" ")
                 : ""}
             </div>
           </div>
