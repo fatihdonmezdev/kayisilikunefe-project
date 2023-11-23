@@ -2,8 +2,12 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
+import { useDispatch } from 'react-redux';
+import { setUser } from "@/store/SignSlice";
 
 const Form = () => {
+    const dispatch = useDispatch();
+
   return (
     <div className="min-h-screen bg-gradient-to-br bg-slate-800">
       <div className="container mx-auto p-4 ">
@@ -29,6 +33,7 @@ const Form = () => {
             })}
             onSubmit={(values, { resetForm, setSubmitting }) => {
               console.log(values);
+              dispatch(setUser(values));
 
               setTimeout(() => {
                 resetForm();
