@@ -11,7 +11,7 @@ https://kayisilikunefe-project.vercel.app/
 
 ### RTK Örnek Açıklamalar
 
-Bu projede RTK ile gelen 'createSlice' ,'configureStore', 'reducer', 'Provider','useSelector' ve 'useDispatch' özellikleri kullanılır. Şimdi bu özeliklerin kullanım amacı aşşağıdaki gibidir.
+Bu projede RTK ile gelen 'createSlice' ,'configureStore', 'reducer', 'Provider','useSelector' ve 'useDispatch' özellikleri kullanılır. Bu özeliklerin kullanım amacı aşşağıdaki gibidir.
 
 #### 1.createSlice:
 Redux state yönetimini kolaylaştarak reducer'ların action'larını birleştirebileceğimiz bir alan oluşturur.
@@ -53,7 +53,7 @@ const store = configureStore({
 Yukarıdaki kodda ana reducer çağırılır. Eylemleri yapılandırmak için 'getDefaultMiddleware' fonksiyonu kullanılır. Bu özellikleri bir araya configureStore toplar.
 
 #### 3.Provider: 
-Redux store'u uygulamanın tüm bileşenlerine erişilebilir kıllar. Aşşağıdaki kodda ana dosya provider ile çerçevelenir ve store çağırılır.
+Redux store'u uygulamanın tüm bileşenlerine erişilebilir kılar. Aşşağıdaki kodda ana dosya provider ile çerçevelenir ve store çağırılır.
 
 import React from 'react';
 import ReactDOM from 'react-dom';
